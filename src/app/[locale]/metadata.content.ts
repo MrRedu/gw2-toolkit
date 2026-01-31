@@ -1,5 +1,4 @@
 import { type Metadata } from 'next'
-
 import { type Dictionary, t } from 'intlayer'
 
 const homePageMetadata = {

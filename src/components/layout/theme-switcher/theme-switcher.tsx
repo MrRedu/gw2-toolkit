@@ -1,9 +1,7 @@
 'use client'
 import { useId } from 'react'
-
 import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-
 import { Switch } from '@/components/ui/switch'
 
 export const ThemeSwitcher = () => {
