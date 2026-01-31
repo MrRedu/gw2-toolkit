@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { type LocalesValues } from 'intlayer'
 import { IntlayerClientProvider } from 'next-intlayer'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-
 import { getQueryClient } from '@/lib/query-client'
 
 interface ProvidersProps {

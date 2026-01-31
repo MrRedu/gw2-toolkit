@@ -1,6 +1,5 @@
 // Add the plugin to the Next.js configuration
 import type { NextConfig } from 'next'
-
 import { withIntlayer } from 'next-intlayer/server'
 
 const nextConfig: NextConfig = {
