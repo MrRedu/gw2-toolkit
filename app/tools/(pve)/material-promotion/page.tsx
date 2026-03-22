@@ -72,7 +72,7 @@ export default function MaterialPromotionPage() {
 
   return (
     <div className="min-h-screen">
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div className="relative max-w-6xl mx-auto">
         {/* Header */}
         <header className="mb-10">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
