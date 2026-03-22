@@ -31,7 +31,7 @@ export const TierSection = ({
       {/* Section Header */}
       <CollapsibleTrigger asChild>
         <div className="flex items-center justify-between gap-1 md:gap-2">
-          <div className="flex items-center justify-between flex-1">
+          <div className="flex items-start lg:items-center justify-between flex-1 flex-col md:flex-row gap-1">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold tracking-wider uppercase px-2 py-1 rounded bg-primary text-secondary border border-primary/50">
@@ -69,7 +69,7 @@ export const TierSection = ({
 
       <CollapsibleContent>
         {/* Table header (desktop) */}
-        <div className="hidden md:grid grid-cols-[2fr_1.2fr_1fr_1fr_1fr] gap-4 px-4 py-2 text-[10px] text-zinc-500 uppercase tracking-widest font-medium border-b border-zinc-800/60">
+        <div className="hidden lg:grid lg:grid-cols-[3.75fr_1.2fr_1.2fr_1.2fr_1.2fr] gap-4 px-4 py-2 text-[10px] text-zinc-500 uppercase tracking-widest font-medium border-b border-zinc-800/60">
           <span>Recipe</span>
           <span>Result</span>
           <span className="text-right">Cost</span>

@@ -74,7 +74,7 @@ export default function MaterialPromotionPage() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Header */}
         <header className="mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 rounded-lg bg-linear-to-br from-amber-500/20 to-orange-600/10 border border-amber-700/30">
@@ -90,7 +90,7 @@ export default function MaterialPromotionPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex  items-center gap-3">
               {/* Buy Mode Toggle */}
               <div className="flex items-center bg-secondary/50 rounded-lg p-1 border border-zinc-800/60">
                 <button

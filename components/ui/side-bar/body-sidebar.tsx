@@ -6,7 +6,13 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from '@/components/ui/sidebar';
-import { type LucideIcon, AnvilIcon, HomeIcon, SwordsIcon } from 'lucide-react';
+import {
+  type LucideIcon,
+  AnvilIcon,
+  HammerIcon,
+  HomeIcon,
+  SwordsIcon,
+} from 'lucide-react';
 import Link from 'next/link';
 
 export type NavItem = {
@@ -30,6 +36,17 @@ export const NAV_GROUPS: NavGroup[] = [
         href: '/',
         tooltip: 'Home',
         icon: HomeIcon,
+      },
+    ],
+  },
+  {
+    label: 'Tools',
+    items: [
+      {
+        label: 'Tools',
+        href: '/tools',
+        tooltip: 'Tools',
+        icon: HammerIcon,
       },
     ],
   },

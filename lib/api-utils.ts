@@ -26,7 +26,7 @@ export function formatGW2Currency(totalCopper: number): {
   toString: () => string;
 } {
   const isNegative = totalCopper < 0;
-  const abs = Math.abs(totalCopper);
+  const abs = Math.round(Math.abs(totalCopper));
 
   const gold = Math.floor(abs / 10000);
   const silver = Math.floor((abs % 10000) / 100);

@@ -2,13 +2,14 @@ import { NAV_GROUPS } from '@/components/ui/side-bar/body-sidebar';
 import Link from 'next/link';
 
 const filteredGroups = NAV_GROUPS.filter(
-  (group) => !group.items.some((item) => item.href === '/'),
+  (group) =>
+    !group.items.some((item) => item.href === '/' || item.href === '/tools'),
 );
 
 export default function ToolsPage() {
   return (
     <section className="py-32 w-full">
-      <div className="max-w-7xl mx-auto w-full space-y-20">
+      <div className="max-w-7xl mx-auto w-full space-y-20 px-4 md:px-6 lg:px-8">
         <h1 className="text-5xl font-semibold tracking-tight lg:text-7xl text-foreground">
           Tools
         </h1>

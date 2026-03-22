@@ -59,7 +59,12 @@ export interface PromotionResult {
   outputIcon: string;
   catalystIcon: string;
   philoStoneIcon: string;
+  philoStoneChatLink?: string;
+  mysticCrystalChatLink?: string;
   // Extra info for tooltips
+  inputChatLink?: string;
+  outputChatLink?: string;
+  catalystChatLink?: string;
   inputPriceObj?: { buy: number; sell: number };
   outputPriceObj?: { buy: number; sell: number };
   catalystPriceObj?: { buy: number; sell: number };
@@ -182,6 +187,11 @@ export function useMaterialPromotion(buyMode: BuyMode = 'sell') {
           outputIcon: outputItem?.icon ?? '',
           catalystIcon: catalystItem?.icon ?? '',
           philoStoneIcon,
+          philoStoneChatLink: itemMap.get(ID_PHILOSOPHER_STONE)?.chat_link,
+          mysticCrystalChatLink: itemMap.get(ID_MYSTIC_CRYSTAL)?.chat_link,
+          inputChatLink: inputItem?.chat_link,
+          outputChatLink: outputItem?.chat_link,
+          catalystChatLink: catalystItem?.chat_link,
           inputPriceObj: inputPrice
             ? {
                 buy: inputPrice.buys.unit_price,
