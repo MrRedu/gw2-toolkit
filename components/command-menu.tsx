@@ -59,7 +59,7 @@ export function CommandMenu({ className }: { className?: string }) {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
-          <CommandInput placeholder="Type a command or search..." />
+          <CommandInput placeholder="Search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             {NAV_GROUPS.map((group) => (

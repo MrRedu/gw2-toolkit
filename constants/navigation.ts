@@ -30,17 +30,17 @@ export const NAV_GROUPS: NavGroup[] = [
       },
     ],
   },
-  {
-    label: 'Tools',
-    items: [
-      {
-        label: 'Tools',
-        href: '/tools',
-        tooltip: 'Tools',
-        icon: HammerIcon,
-      },
-    ],
-  },
+  // {
+  //   label: 'Tools',
+  //   items: [
+  //     {
+  //       label: 'Tools',
+  //       href: '/tools',
+  //       tooltip: 'Tools',
+  //       icon: HammerIcon,
+  //     },
+  //   ],
+  // },
   {
     label: 'PvE',
     items: [
