@@ -1,20 +1,24 @@
-import { NAV_GROUPS } from '@/components/ui/side-bar/body-sidebar';
+import { NAV_GROUPS } from '@/constants/navigation';
+import type { NavGroup, NavItem } from '@/constants/navigation';
 import Link from 'next/link';
 
 const filteredGroups = NAV_GROUPS.filter(
-  (group) => !group.items.some((item) => item.href === '/'),
+  (group: NavGroup) =>
+    !group.items.some(
+      (item: NavItem) => item.href === '/' || item.href === '/tools',
+    ),
 );
 
 export default function ToolsPage() {
   return (
     <section className="py-32 w-full">
-      <div className="max-w-7xl mx-auto w-full space-y-20">
+      <div className="w-full space-y-20 ">
         <h1 className="text-5xl font-semibold tracking-tight lg:text-7xl text-foreground">
           Tools
         </h1>
 
         <div className="space-y-16">
-          {filteredGroups.map((group, index) => (
+          {filteredGroups.map((group: NavGroup, index: number) => (
             <div key={group.label || index} className="space-y-8">
               {group.label && (
                 <h2 className="text-3xl font-bold border-b pb-2 text-foreground/80 uppercase tracking-widest">
@@ -22,7 +26,7 @@ export default function ToolsPage() {
                 </h2>
               )}
               <ul className="grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {group.items.map((item) => (
+                {group.items.map((item: NavItem) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}

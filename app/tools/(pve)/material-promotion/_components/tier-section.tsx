@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/collapsible';
 import { ChevronsUpDownIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 interface TierSectionProps {
   inputTier: number;
@@ -27,11 +28,10 @@ export const TierSection = ({
 
   return (
     <Collapsible className="space-y-3" defaultOpen={defaultOpen}>
-      {/* // <section className="space-y-3"> */}
       {/* Section Header */}
       <CollapsibleTrigger asChild>
-        <div className="flex items-center justify-between gap-1 md:gap-2">
-          <div className="flex items-center justify-between flex-1">
+        <div className="flex items-center justify-between gap-1 md:gap-2 @container cursor-pointer">
+          <div className="flex items-start lg:items-center justify-between flex-1 flex-col gap-1 @[620px]:flex-row">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold tracking-wider uppercase px-2 py-1 rounded bg-primary text-secondary border border-primary/50">
@@ -53,12 +53,9 @@ export const TierSection = ({
                 </span>
                 /{results.length} profitable
               </span>
-              <div
-                // bg-red-950/20 border border-red-900/20
-                className={`text-xs font-mono px-2 py-0.5 rounded ${totalProfit >= 0 ? 'bg-emerald-950/40 text-emerald-400' : 'bg-red-950/20 text-red-400'}`}
-              >
+              <Badge size="lg" variant={totalProfit >= 0 ? 'green' : 'red'}>
                 Σ <CurrencyDisplay copper={totalProfit} />
-              </div>
+              </Badge>
             </div>
           </div>
           <Button variant="ghost" size="icon" className="shrink-0">
@@ -69,7 +66,7 @@ export const TierSection = ({
 
       <CollapsibleContent>
         {/* Table header (desktop) */}
-        <div className="hidden md:grid grid-cols-[2fr_1.2fr_1fr_1fr_1fr] gap-4 px-4 py-2 text-[10px] text-zinc-500 uppercase tracking-widest font-medium border-b border-zinc-800/60">
+        <div className="hidden lg:grid lg:grid-cols-[3.75fr_1.2fr_1.2fr_1.2fr_1.2fr] gap-4 px-4 py-2 text-[10px] text-muted-foreground uppercase tracking-widest font-medium border-b ">
           <span>Recipe</span>
           <span>Result</span>
           <span className="text-right">Cost</span>

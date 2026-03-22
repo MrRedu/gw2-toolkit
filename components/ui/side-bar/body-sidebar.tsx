@@ -6,56 +6,8 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from '@/components/ui/sidebar';
-import { type LucideIcon, AnvilIcon, HomeIcon, SwordsIcon } from 'lucide-react';
 import Link from 'next/link';
-
-export type NavItem = {
-  label: string;
-  href: string;
-  tooltip: string;
-  icon: LucideIcon;
-};
-
-export type NavGroup = {
-  label?: string;
-  items: NavItem[];
-};
-
-export const NAV_GROUPS: NavGroup[] = [
-  {
-    // label: 'Home',
-    items: [
-      {
-        label: 'Home',
-        href: '/',
-        tooltip: 'Home',
-        icon: HomeIcon,
-      },
-    ],
-  },
-  {
-    label: 'PvE',
-    items: [
-      {
-        label: 'Material promotion',
-        href: '/tools/material-promotion',
-        tooltip: 'Material promotion',
-        icon: AnvilIcon,
-      },
-    ],
-  },
-  {
-    label: 'WvW',
-    items: [
-      {
-        label: 'Test',
-        href: '#',
-        tooltip: 'Test',
-        icon: SwordsIcon,
-      },
-    ],
-  },
-];
+import { NAV_GROUPS } from '@/constants/navigation';
 
 export const BodySidebar = () => {
   return (
