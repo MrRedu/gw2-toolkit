@@ -59,7 +59,10 @@ export interface PromotionResult {
   outputIcon: string;
   catalystIcon: string;
   philoStoneIcon: string;
+  philoStoneName: string;
   philoStoneChatLink?: string;
+  mysticCrystalIcon: string;
+  mysticCrystalName: string;
   mysticCrystalChatLink?: string;
   // Extra info for tooltips
   inputChatLink?: string;
@@ -96,7 +99,8 @@ export function useMaterialPromotion(buyMode: BuyMode = 'sell') {
     const priceMap = new Map(pricesQuery.data.map((p) => [p.id, p]));
     const itemMap = new Map(itemsQuery.data.map((i) => [i.id, i]));
 
-    const philoStoneIcon = itemMap.get(ID_PHILOSOPHER_STONE)?.icon ?? '';
+    const philoStoneItem = itemMap.get(ID_PHILOSOPHER_STONE);
+    const mysticCrystalItem = itemMap.get(ID_MYSTIC_CRYSTAL);
 
     // Find the dust family for catalyst lookups
     const dustFamily = MATERIAL_FAMILIES.find((f) => f.isDust)!;
@@ -186,9 +190,12 @@ export function useMaterialPromotion(buyMode: BuyMode = 'sell') {
           inputIcon: inputItem?.icon ?? '',
           outputIcon: outputItem?.icon ?? '',
           catalystIcon: catalystItem?.icon ?? '',
-          philoStoneIcon,
-          philoStoneChatLink: itemMap.get(ID_PHILOSOPHER_STONE)?.chat_link,
-          mysticCrystalChatLink: itemMap.get(ID_MYSTIC_CRYSTAL)?.chat_link,
+          philoStoneIcon: philoStoneItem?.icon ?? '',
+          philoStoneName: philoStoneItem?.name ?? "Philosopher's Stone",
+          philoStoneChatLink: philoStoneItem?.chat_link,
+          mysticCrystalIcon: mysticCrystalItem?.icon ?? '',
+          mysticCrystalName: mysticCrystalItem?.name ?? 'Mystic Crystal',
+          mysticCrystalChatLink: mysticCrystalItem?.chat_link,
           inputChatLink: inputItem?.chat_link,
           outputChatLink: outputItem?.chat_link,
           catalystChatLink: catalystItem?.chat_link,

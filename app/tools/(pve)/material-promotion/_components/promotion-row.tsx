@@ -100,9 +100,15 @@ export const PromotionRow = ({ result }: PromotionRowProps) => {
               ? result.philoStoneChatLink
               : result.mysticCrystalChatLink
           }
-          icon={result.philoStoneIcon}
+          icon={
+            result.outputTier >= 6
+              ? result.philoStoneIcon
+              : result.mysticCrystalIcon
+          }
           name={
-            result.outputTier >= 6 ? "Philosopher's Stone" : 'Mystic Crystal'
+            result.outputTier >= 6
+              ? result.philoStoneName
+              : result.mysticCrystalName
           }
           qty={result.philoStones}
         />

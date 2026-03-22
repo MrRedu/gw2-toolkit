@@ -19,6 +19,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 
 // ─── Loading Skeleton ────────────────────────────────────────────────
 function LoadingSkeleton() {
@@ -84,7 +85,7 @@ export default function MaterialPromotionPage() {
                   Material Promotion
                 </h1>
               </div>
-              <p className="text-sm text-muted-foreground max-w-lg">
+              <p className="text-sm text-muted-foreground max-w-md">
                 Mystic Forge fine crafting material upgrade calculator. Prices
                 updated in real-time from the GW2 Trading Post.
               </p>
@@ -92,31 +93,31 @@ export default function MaterialPromotionPage() {
 
             <div className="flex  items-center gap-3">
               {/* Buy Mode Toggle */}
-              <div className="flex items-center bg-secondary/50 rounded-lg p-1 border border-zinc-800/60">
-                <button
+              <div className="flex items-center bg-card rounded-lg p-1 border">
+                <Button
+                  variant={buyMode === 'buy' ? 'default' : 'ghost'}
+                  size="sm"
                   onClick={() => setBuyMode('buy')}
                   className={cn(
-                    'flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all',
-                    buyMode === 'buy'
-                      ? 'bg-zinc-800 text-zinc-100 shadow-sm'
-                      : 'text-muted-foreground hover:text-zinc-300',
+                    'text-xs font-medium',
+                    buyMode === 'buy' && 'text-amber-400',
                   )}
                 >
                   <Clock className="size-3" />
                   Buy Order
-                </button>
-                <button
+                </Button>
+                <Button
+                  variant={buyMode === 'sell' ? 'default' : 'ghost'}
+                  size="sm"
                   onClick={() => setBuyMode('sell')}
                   className={cn(
-                    'flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all',
-                    buyMode === 'sell'
-                      ? 'bg-zinc-800 text-emerald-400 shadow-sm'
-                      : 'text-muted-foreground hover:text-zinc-300',
+                    'text-xs font-medium',
+                    buyMode === 'sell' && 'text-emerald-400',
                   )}
                 >
                   <ShoppingCart className="size-3" />
                   Instant Buy
-                </button>
+                </Button>
               </div>
 
               {/* Refresh button */}
@@ -132,36 +133,36 @@ export default function MaterialPromotionPage() {
           {/* Stats bar */}
           {!isLoading && !isError && (
             <div className="mt-6 flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary border border-zinc-800/60">
+              <Badge variant="secondary" size="lg">
                 <span className="text-[10px] text-muted-foreground uppercase tracking-wider">
                   Total Recipes
                 </span>
                 <span className="text-sm font-mono text-muted-foreground font-semibold">
                   {results.length}
                 </span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-950/30 border border-emerald-900/30">
+              </Badge>
+              <Badge variant="green" size="lg">
                 <span className="text-[10px] text-emerald-600 uppercase tracking-wider">
                   Profitable
                 </span>
                 <span className="text-sm font-mono text-emerald-400 font-semibold">
                   {profitableCount}
                 </span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-red-950/20 border border-red-900/20">
+              </Badge>
+              <Badge variant="red" size="lg">
                 <span className="text-[10px] text-red-500/70 uppercase tracking-wider">
                   Unprofitable
                 </span>
                 <span className="text-sm font-mono text-red-400 font-semibold">
                   {results.length - profitableCount}
                 </span>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-950/20 border border-amber-900/20">
-                <span className="text-[10px] text-amber-600 uppercase tracking-wider">
+              </Badge>
+              <Badge variant="purple" size="lg">
+                <span className="text-[10px] text-purple-600 uppercase tracking-wider">
                   Total Potential Profit
                 </span>
                 <CurrencyDisplay copper={totalProfit} />
-              </div>
+              </Badge>
             </div>
           )}
         </header>
@@ -209,7 +210,7 @@ export default function MaterialPromotionPage() {
                 </span>{' '}
                 {'prices for all ingredients. Revenue accounts for the'}{' '}
                 <span className="text-amber-300">15% TP tax</span>.{' '}
-                {`Philosopher's Stones are crafted from Spirit Shards and are not included in the cost.`}
+                {`Philosopher's Stones are bought with Spirit Shards and are not included in the cost.`}
               </AlertDescription>
             </Alert>
 
