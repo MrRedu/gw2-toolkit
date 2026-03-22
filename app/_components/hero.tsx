@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import {
   AnvilIcon,
-  ArrowRightIcon,
+  ArrowDownIcon,
   TrendingUpIcon,
   ZapIcon,
 } from 'lucide-react';
@@ -30,12 +30,7 @@ const ITEMS = [
 
 export const Hero = () => {
   return (
-    <section className="relative flex min-h-svh items-center justify-center overflow-hidden bg-background py-16 lg:py-32 w-full">
-      {/* Background blur blobs */}
-      <div aria-hidden="true">
-        <div className="absolute -right-0 -bottom-[30rem] size-[35rem] rounded-full bg-rose-400 opacity-40 blur-[5rem] md:-right-[2rem] md:-bottom-[50rem] md:size-[55rem] dark:opacity-20" />
-        <div className="absolute -right-[20rem] -bottom-[20rem] size-[35rem] rounded-full bg-sky-500 opacity-40 blur-[5rem] md:-right-[32rem] md:-bottom-[36rem] md:size-[55rem] dark:opacity-20" />
-      </div>
+    <section className="relative flex min-h-svh items-center justify-center overflow-hidden w-full">
       <div className="relative flex container h-full flex-col justify-between px-4 md:px-6 lg:px-8 gap-16">
         <div className="flex flex-1 items-center justify-center">
           <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
@@ -46,9 +41,9 @@ export const Hero = () => {
               {`A collection of tools for Guild Wars 2 players.`}
             </p>
             <Button size="lg" className="mt-10" asChild>
-              <Link href="/tools">
+              <Link href="/#tools">
                 Explore tools
-                <ArrowRightIcon />
+                <ArrowDownIcon />
               </Link>
             </Button>
           </div>

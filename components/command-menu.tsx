@@ -17,6 +17,7 @@ import { SearchIcon } from 'lucide-react';
 import { Kbd } from '@/components/ui/kbd';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export function CommandMenu({ className }: { className?: string }) {
   const [open, setOpen] = React.useState(false);
@@ -59,7 +60,7 @@ export function CommandMenu({ className }: { className?: string }) {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
-          <CommandInput placeholder="Type a command or search..." />
+          <CommandInput placeholder="Search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             {NAV_GROUPS.map((group) => (
@@ -72,7 +73,16 @@ export function CommandMenu({ className }: { className?: string }) {
                         runCommand(() => router.push(item.href));
                       }}
                     >
-                      <item.icon className="mr-2 h-4 w-4" />
+                      {item.icon && <item.icon className="size-6!" />}
+                      {item.image && (
+                        <Image
+                          src={item.image}
+                          alt={item.label}
+                          width={24}
+                          height={24}
+                          className="size-6 rounded-xs"
+                        />
+                      )}
                       <span>{item.label}</span>
                     </CommandItem>
                   ))}

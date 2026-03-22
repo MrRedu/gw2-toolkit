@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import Providers from './providers';
+import { cookies } from 'next/headers';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -21,11 +22,14 @@ export const metadata: Metadata = {
   description: 'A collection of tools for Guild Wars 2 players.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const isSidebarOpen = cookieStore.get('sidebar_state')?.value === 'true';
+
   return (
     <html
       lang="en"
@@ -37,8 +41,8 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <Providers>{children}</Providers>
+      <body className="min-h-svh flex flex-col relative">
+        <Providers isSidebarOpen={isSidebarOpen}>{children}</Providers>
       </body>
     </html>
   );

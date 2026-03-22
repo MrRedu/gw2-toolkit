@@ -11,6 +11,9 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ThemeToggler } from '@/components/molecules/theme-toggler';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/ui/side-bar/app-sidebar';
+import { Header } from './_components/header';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -47,7 +50,13 @@ export function ThemeProvider({
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  isSidebarOpen,
+}: {
+  children: React.ReactNode;
+  isSidebarOpen: boolean;
+}) {
   // NOTE: Avoid useState when initializing the query client if you don't
   //       have a suspense boundary between this and the code that may
   //       suspend because React will throw away the client on the initial
@@ -62,7 +71,20 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        <TooltipProvider>{children}</TooltipProvider>
+        <TooltipProvider>
+          <SidebarProvider defaultOpen={isSidebarOpen}>
+            <AppSidebar />
+            <SidebarInset className="relative">
+              <div className="fixed right-0 bottom-0 w-[446px] h-[183px] bg-[url('/images/bg.png')] bg-contain bg-no-repeat rotate-180" />
+              <div className="fixed top-14 left-0 right-0 w-full h-full bg-[url('/images/bg-top.png')] bg-contain bg-no-repeat" />
+
+              <Header />
+              <main className="max-w-7xl  z-1 mx-auto w-full px-4 md:px-6 lg:px-8 py-8 sm:py-12">
+                {children}
+              </main>
+            </SidebarInset>
+          </SidebarProvider>
+        </TooltipProvider>
         <ThemeToggler />
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
