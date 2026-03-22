@@ -1,31 +1,30 @@
 import { Button } from '@/components/ui/button';
 import {
-  ArrowDownIcon,
+  AnvilIcon,
   ArrowRightIcon,
-  BookOpenIcon,
-  LayoutGridIcon,
-  SparklesIcon,
+  TrendingUpIcon,
+  ZapIcon,
 } from 'lucide-react';
 import Link from 'next/link';
 
 const ITEMS = [
   {
-    icon: SparklesIcon,
-    title: 'Visual Identity',
+    icon: TrendingUpIcon,
+    title: 'Profitability Analysis',
     description:
-      'We shape visual systems that blend craft and clarity to spark recognition and connection.',
+      'Maximize your earnings with real-time updates on Mystic Forge promotions and material crafting.',
   },
   {
-    icon: LayoutGridIcon,
-    title: 'Interactive Experiences',
+    icon: ZapIcon,
+    title: 'Live Market Data',
     description:
-      'Experiences that tie design and technology together to tell your story in motion.',
+      'Direct integration with the Guild Wars 2 API ensures you always have the latest Trading Post prices.',
   },
   {
-    icon: BookOpenIcon,
-    title: 'Workshops',
+    icon: AnvilIcon,
+    title: 'PvE & WvW Utilities',
     description:
-      'Hands-on sessions that adapt to your goals and help you grow with practical guidance.',
+      'A growing collection of specialized tools to optimize your daily gameplay and endgame progression.',
   },
 ];
 
