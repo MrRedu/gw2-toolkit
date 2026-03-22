@@ -2,6 +2,7 @@
 import { Sidebar } from '@/components/ui/sidebar';
 import { HeaderSidebar } from './header-sidebar';
 import { BodySidebar } from './body-sidebar';
+import { FooterSidebar } from './footer-sidebar';
 
 export function AppSidebar() {
   return (
@@ -9,7 +10,7 @@ export function AppSidebar() {
       {/* Header */}
       <HeaderSidebar />
       <BodySidebar />
-      {/* <SidebarFooter>Footer</SidebarFooter> */}
+      <FooterSidebar />
     </Sidebar>
   );
 }

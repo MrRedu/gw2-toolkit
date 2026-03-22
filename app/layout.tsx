@@ -42,16 +42,6 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-svh flex flex-col relative">
-        {/* Background blur blobs */}
-
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 pointer-events-none z-50"
-        >
-          <div className="absolute right-0 -bottom-120 size-140 rounded-full bg-rose-400 opacity-40 blur-[5rem] md:-right-8 md:-bottom-200 md:size-220 dark:opacity-20" />
-          <div className="absolute -right-80 -bottom-80 size-140 rounded-full bg-sky-500 opacity-40 blur-[5rem] md:-right-128 md:-bottom-144 md:size-220 dark:opacity-20" />
-        </div>
-
         <Providers isSidebarOpen={isSidebarOpen}>{children}</Providers>
       </body>
     </html>

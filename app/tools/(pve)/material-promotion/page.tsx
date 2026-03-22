@@ -77,15 +77,15 @@ export default function MaterialPromotionPage() {
         <header className="mb-10">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
             <div>
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3 mb-2 ">
                 <div className="p-2 rounded-lg bg-linear-to-br from-amber-500/20 to-orange-600/10 border border-amber-700/30">
                   <AnvilIcon className="size-5 text-amber-500" />
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-primary tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white tracking-tight">
                   Material Promotion
                 </h1>
               </div>
-              <p className="text-sm text-muted-foreground max-w-md">
+              <p className="text-sm text-black/80 dark:text-white/80 max-w-md">
                 Mystic Forge fine crafting material upgrade calculator. Prices
                 updated in real-time from the GW2 Trading Post.
               </p>

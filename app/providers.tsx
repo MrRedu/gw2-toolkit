@@ -74,9 +74,12 @@ export default function Providers({
         <TooltipProvider>
           <SidebarProvider defaultOpen={isSidebarOpen}>
             <AppSidebar />
-            <SidebarInset>
+            <SidebarInset className="relative">
+              <div className="fixed right-0 bottom-0 w-[446px] h-[183px] bg-[url('/images/bg.png')] bg-contain bg-no-repeat rotate-180" />
+              <div className="fixed top-14 left-0 right-0 w-full h-full bg-[url('/images/bg-top.png')] bg-contain bg-no-repeat" />
+
               <Header />
-              <main className="max-w-7xl mx-auto w-full px-4 md:px-6 lg:px-8 py-8 sm:py-12">
+              <main className="max-w-7xl  z-1 mx-auto w-full px-4 md:px-6 lg:px-8 py-8 sm:py-12">
                 {children}
               </main>
             </SidebarInset>
