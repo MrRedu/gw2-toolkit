@@ -19,18 +19,16 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
-  "typeRoots": ["./node_modules/@types"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    ".intlayer/**/*.ts"
+    "**/*.mts"
   ],
   "exclude": ["node_modules"]
 }

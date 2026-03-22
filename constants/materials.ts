@@ -1,0 +1,2 @@
+export const ID_PHILOSOPHER_STONE = 20796;
+export const ID_MYSTIC_CRYSTAL = 20799;
