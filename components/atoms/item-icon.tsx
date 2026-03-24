@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 interface ItemIconProps {
-  src: string;
+  src?: string;
   alt: string;
   size?: number;
 }

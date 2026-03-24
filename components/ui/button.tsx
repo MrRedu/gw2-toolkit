@@ -21,6 +21,7 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         image:
           "relative z-1 text-white hover:brightness-110 active:brightness-95 overflow-visible before:absolute before:-inset-8 before:-top-3 before:-z-10 before:bg-[url('/images/bg-button.png')] before:bg-position-[center_6px] before:bg-no-repeat before:bg-contain before:transition-all before:pointer-events-none",
+        gw2: 'rounded-none text-black text-sm h-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] bg-[#f2ead4] hover:bg-white',
       },
       size: {
         default:
