@@ -12,7 +12,7 @@ export const ThemeToggler = () => {
       aria-label="Toggle bookmark"
       size="lg"
       variant="outline"
-      className="fixed right-8 bottom-8"
+      className="fixed right-8 bottom-8 z-[999]"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       {theme === 'dark' ? (

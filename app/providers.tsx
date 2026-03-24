@@ -10,10 +10,10 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import { ThemeToggler } from '@/components/molecules/theme-toggler';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/ui/side-bar/app-sidebar';
 import { Header } from './_components/header';
+import Image from 'next/image';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -67,25 +67,39 @@ export default function Providers({
     <QueryClientProvider client={queryClient}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
-        enableSystem
+        defaultTheme="dark"
+        forcedTheme="dark"
+        // defaultTheme="system"
+        // enableSystem
+        enableSystem={false}
         disableTransitionOnChange
       >
         <TooltipProvider>
           <SidebarProvider defaultOpen={isSidebarOpen}>
             <AppSidebar />
             <SidebarInset className="relative">
-              <div className="fixed right-0 bottom-0 w-[446px] h-[183px] bg-[url('/images/bg.png')] bg-contain bg-no-repeat rotate-180" />
-              <div className="fixed top-14 left-0 right-0 w-full h-full bg-[url('/images/bg-top.png')] bg-contain bg-no-repeat" />
+              {/* ****** Decoration images ************* */}
+              <Image
+                src="/images/bg-top.png"
+                alt=""
+                className="fixed left-0 right-0 h-[280px] w-auto opacity-40"
+                width={2291}
+                height={280}
+              />
+              <Image
+                src="/images/bg.png"
+                alt=""
+                className="fixed bottom-0 right-0 w-[446px] h-[183px] rotate-180 opacity-40"
+                width={446}
+                height={183}
+              />
+              {/* ************************************** */}
 
               <Header />
-              <main className="max-w-7xl  z-1 mx-auto w-full px-4 md:px-6 lg:px-8 py-8 sm:py-12">
-                {children}
-              </main>
+              <main>{children}</main>
             </SidebarInset>
           </SidebarProvider>
         </TooltipProvider>
-        <ThemeToggler />
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

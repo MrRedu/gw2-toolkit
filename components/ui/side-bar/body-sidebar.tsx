@@ -9,6 +9,7 @@ import {
 import Link from 'next/link';
 import { NAV_GROUPS } from '@/constants/navigation';
 import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
 
 export const BodySidebar = () => {
   return (
@@ -19,8 +20,16 @@ export const BodySidebar = () => {
           <SidebarGroupContent>
             {group.items.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <SidebarMenuButton tooltip={item.tooltip} asChild>
-                  <Link href={item.href} className="text-nowrap">
+                <SidebarMenuButton
+                  tooltip={item.tooltip}
+                  asChild
+                  size="lg"
+                  variant="gw2"
+                >
+                  <Link
+                    href={item.href}
+                    className="text-nowrap flex items-center w-full grow!"
+                  >
                     {item.icon && <item.icon className="size-6!" />}
                     {item.image && (
                       <Image
@@ -31,7 +40,8 @@ export const BodySidebar = () => {
                         className="size-6 rounded-xs"
                       />
                     )}
-                    {item.label}
+                    <span className="grow!">{item.label}</span>
+                    <ChevronRight className="size-6 opacity-70" />
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
