@@ -3,11 +3,9 @@
 import { Section } from '@/components/atoms/section';
 import {
   CheckIcon,
-  CircleQuestionMarkIcon,
   CodeIcon,
   CopyIcon,
   ExternalLinkIcon,
-  HouseIcon,
   Loader2Icon,
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
@@ -23,7 +21,7 @@ import {
   FieldGroup,
 } from '@/components/ui/field';
 import { useChatCodeGenerator } from '@/hooks/use-chat-code-generator';
-import { type GW2Item } from '@/types/gw2';
+import { type Item } from '@gw2api/types/data/item';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -106,7 +104,7 @@ export default function ChatCodeGeneratorPage() {
               {form.watch('itemId').length >= 1 && !selectedItem && (
                 <div className="absolute z-50 w-full mt-2 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-2xl overflow-hidden py-1.5 animate-in fade-in slide-in-from-top-2 duration-200 top-full">
                   {searchResults && searchResults.length > 0
-                    ? searchResults.map((item: GW2Item) => (
+                    ? searchResults.map((item: Item) => (
                         <button
                           key={item.id}
                           type="button"
@@ -268,7 +266,7 @@ function GW2ItemPreview({
   upgrade1Id,
   upgrade2Id,
 }: {
-  item: GW2Item;
+  item: Item;
   quantity: number;
   finalCode: string;
   copied: boolean;
@@ -347,7 +345,7 @@ function GW2ItemPreview({
                   <span className="text-[12px] text-white/80">
                     Weapon Strength:{' '}
                     <span className="text-[#33ff33]">
-                      {item.details.min_power} - {item.details.max_power}
+                      {item.details?.min_power} - {item.details?.max_power}
                     </span>{' '}
                   </span>
                 )}
@@ -442,16 +440,16 @@ function GW2ItemPreview({
  * Fetches and displays information for a GW2 Item by ID
  */
 function UpgradeSlot({ id }: { id?: string }) {
-  const isNumeric = id && /^\d+$/.test(id);
+  const isNumeric = Boolean(id && /^\d+$/.test(id));
 
   const { data: upgrade, isLoading } = useQuery({
     queryKey: ['upgrade-item', id],
     queryFn: async () => {
-      if (!id || !isNumeric) return null;
-      const res = await fetchItems([parseInt(id)]);
+      if (!isNumeric) return null;
+      const res = await fetchItems([parseInt(id!)]);
       return res?.[0] ?? null;
     },
-    enabled: !!id && isNumeric,
+    enabled: isNumeric,
     staleTime: 1000 * 60 * 10, // 10 minutes cache
   });
 

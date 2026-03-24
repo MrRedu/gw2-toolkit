@@ -6,7 +6,7 @@ import * as z from 'zod';
 import { useState, useCallback, useEffect } from 'react';
 import { useItemSearch } from './use-item-search';
 import { encodeChatCode } from '@/utils/gw2-encoder';
-import { type GW2Item } from '@/types/gw2';
+import { type Item } from '@gw2api/types/data/item';
 
 export const chatCodeSchema = z.object({
   itemId: z
@@ -31,7 +31,7 @@ export const chatCodeSchema = z.object({
 export type ChatCodeFormValues = z.infer<typeof chatCodeSchema>;
 
 export const useChatCodeGenerator = () => {
-  const [selectedItem, setSelectedItem] = useState<GW2Item | null>(null);
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   const [copied, setCopied] = useState(false);
 
   const form = useForm<ChatCodeFormValues>({
@@ -65,7 +65,7 @@ export const useChatCodeGenerator = () => {
     : '[&]';
 
   const handleSelectItem = useCallback(
-    (item: GW2Item) => {
+    (item: Item) => {
       setSelectedItem(item);
       form.setValue('itemId', item.id.toString());
     },
