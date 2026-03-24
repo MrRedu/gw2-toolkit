@@ -40,7 +40,7 @@ export const Hero = () => {
             <p className="mt-8 max-w-xl text-pretty text-muted-foreground md:text-lg">
               {`A collection of tools for Guild Wars 2 players.`}
             </p>
-            <Button size="lg" className="mt-10" asChild>
+            <Button size="lg" className="mt-10" variant="image" asChild>
               <Link href="/#tools">
                 Explore tools
                 <ArrowDownIcon />

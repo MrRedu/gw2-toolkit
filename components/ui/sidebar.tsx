@@ -261,16 +261,16 @@ function SidebarTrigger({
     <Button
       data-sidebar="trigger"
       data-slot="sidebar-trigger"
-      variant="ghost"
+      variant="outline"
       size="icon-sm"
-      className={cn(className)}
+      className={cn(className, 'border-ring bg-input/10 hover:bg-input/5')}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
-      <PanelLeftIcon />
+      <PanelLeftIcon className="text-white" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
@@ -473,11 +473,12 @@ const sidebarMenuButtonVariants = cva(
         default: 'hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
         outline:
           'bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]',
+        gw2: 'relative bg-linear-to-r from-black/90 to-transparent text-white hover:bg-transparent hover:text-white rounded-none border-none transition-all duration-500 overflow-hidden after:absolute after:inset-0 after:bg-linear-to-r after:from-amber-400/90 after:to-transparent after:-translate-x-full hover:after:translate-x-0 after:transition-transform after:duration-500 after:ease-out [&>*]:relative [&>*]:z-10',
       },
       size: {
         default: 'h-8 text-sm',
         sm: 'h-7 text-xs',
-        lg: 'h-12 text-sm group-data-[collapsible=icon]:p-0!',
+        lg: 'h-12 text-sm ',
       },
     },
     defaultVariants: {

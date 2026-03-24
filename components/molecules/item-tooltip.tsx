@@ -52,12 +52,12 @@ export function ItemTooltip({
     }
   };
 
-  const wikiUrl = `https://wiki.guildwars2.com/wiki/Special:Search?search=${encodeURIComponent(itemId?.toString() || name)}`;
+  const WIKI_URL = `https://wiki.guildwars2.com/wiki/?search=${encodeURIComponent(name)}`;
 
   const content = (
     <div className="flex flex-col gap-3">
       <div className="font-bold text-sm text-primary border-b pb-2 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-white">
           <ItemIcon src={icon} alt={name} size={20} />
           {name}
         </div>
@@ -66,11 +66,11 @@ export function ItemTooltip({
       {priceObj ? (
         <div className="space-y-2">
           <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[11px]">
-            <span className="text-muted-foreground">Unit Buy (Instant):</span>
+            <span className="text-white/80">Unit Buy (Instant):</span>
             <div className="text-right">
               <CurrencyDisplay copper={priceObj.sell} />
             </div>
-            <span className="text-muted-foreground">Unit Buy (Order):</span>
+            <span className="text-white/80">Unit Buy (Order):</span>
             <div className="text-right">
               <CurrencyDisplay copper={priceObj.buy} />
             </div>
@@ -79,7 +79,7 @@ export function ItemTooltip({
           {qty && qty > 1 && (
             <div className="pt-2 border-t mt-1">
               <div className="flex items-center justify-between text-[11px] font-medium gap-2">
-                <span className="text-muted-foreground whitespace-nowrap">
+                <span className="text-white/80 whitespace-nowrap">
                   {Number.isInteger(qty) ? qty : qty.toFixed(2)}x Total:
                 </span>
                 <div className="shrink-0">
@@ -99,7 +99,7 @@ export function ItemTooltip({
 
       <div className="grid grid-cols-2 gap-2 pt-2 border-t mt-1">
         <Button variant="outline" size="xs" asChild>
-          <Link href={wikiUrl} target="_blank" rel="noopener noreferrer">
+          <Link href={WIKI_URL} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="size-3.5" />
             Wiki
           </Link>
@@ -130,7 +130,11 @@ export function ItemTooltip({
     return (
       <Popover>
         <PopoverTrigger asChild>{children}</PopoverTrigger>
-        <PopoverContent className="w-64 bg-card border p-3 shadow-2xl">
+        <PopoverContent className="relative w-64 bg-transparent">
+          <div
+            className="absolute inset-0 -z-1  bg-[url('/images/bg-tooltip.webp')] bg-no-repeat opacity-95"
+            aria-hidden
+          />
           {content}
         </PopoverContent>
       </Popover>
@@ -140,7 +144,11 @@ export function ItemTooltip({
   return (
     <HoverCard openDelay={0} closeDelay={0}>
       <HoverCardTrigger asChild>{children}</HoverCardTrigger>
-      <HoverCardContent className="w-64 bg-card border p-3 shadow-2xl">
+      <HoverCardContent className="relative w-64 bg-transparent">
+        <div
+          className="absolute inset-0 -z-1  bg-[url('/images/bg-tooltip.webp')] bg-no-repeat opacity-95"
+          aria-hidden
+        />
         {content}
       </HoverCardContent>
     </HoverCard>

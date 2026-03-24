@@ -6,7 +6,7 @@ export const Tools = () => {
   const allTools = NAV_GROUPS.flatMap((group) => group.items);
 
   return (
-    <section className="w-full py-16 md:py-32" id="tools">
+    <section className="w-full py-16 md:py-32 max-w-7xl mx-auto" id="tools">
       <div className="container px-4 md:px-6">
         <h2 className="text-xl font-semibold tracking-tight text-foreground mb-16">
           Featured
