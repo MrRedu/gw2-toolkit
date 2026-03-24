@@ -21,6 +21,7 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Section } from '@/components/atoms/section';
+import Image from 'next/image';
 
 // ─── Loading Skeleton ────────────────────────────────────────────────
 function LoadingSkeleton() {
@@ -206,8 +207,13 @@ export default function MaterialPromotionPage() {
       ) : (
         <div className="space-y-10">
           {/* Info banner */}
-          <Alert>
-            <CircleQuestionMarkIcon />
+          <Alert variant="gw2">
+            <Image
+              src="/icons/mentoring_badge.png"
+              alt="Mentoring Badge"
+              width={36}
+              height={36}
+            />
             <AlertTitle>How it works</AlertTitle>
             <AlertDescription>
               Each recipe converts lower-tier fine crafting materials into

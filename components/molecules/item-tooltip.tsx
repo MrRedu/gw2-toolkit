@@ -98,14 +98,14 @@ export function ItemTooltip({
       )}
 
       <div className="grid grid-cols-2 gap-2 pt-2 border-t mt-1">
-        <Button variant="outline" size="xs" asChild>
+        <Button variant="gw2" size="xs" asChild>
           <Link href={WIKI_URL} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="size-3.5" />
             Wiki
           </Link>
         </Button>
         <Button
-          variant="outline"
+          variant="gw2"
           size="xs"
           onClick={handleCopy}
           disabled={!chatLink}

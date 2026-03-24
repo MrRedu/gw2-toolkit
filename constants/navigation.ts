@@ -71,10 +71,11 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       {
         label: 'Chat Code Generator',
-        href: '#',
+        href: '/tools/chat-code-generator',
         tooltip: 'Utility: Chat Code Generator',
         description: 'Description',
         ctaLabel: 'Create Chat Code',
+        image: '/icons/under_construction.png',
       },
       // {
       //   label: 'Trading Post Calculator',
