@@ -26,6 +26,87 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import Image from 'next/image';
+import { ResponsiveHoverCard } from '@/components/molecules/responsive-hover-card';
+
+const EmptyPreview = () => {
+  return (
+    <div
+      className={cn(
+        'flex flex-col gap-2 items-center justify-center p-12 w-full rounded-3xl border transition-all duration-300',
+        'bg-neutral-100/50 dark:bg-neutral-900/30 border-dashed border-neutral-300 dark:border-neutral-800',
+      )}
+    >
+      <Image
+        src="/icons/level-80_boost.png"
+        alt="Item"
+        width={64}
+        height={64}
+        className="rounded-full size-16 opacity-75"
+      />
+      <p className="text-muted-foreground font-medium">
+        Search for an item to start
+      </p>
+    </div>
+  );
+};
+
+type ChatCodeExample = {
+  title: string;
+  itemId: number;
+  quantity: number;
+  skinId: number | null;
+  upgrade1Id: number | null;
+  upgrade2Id: number | null;
+};
+
+const examples: ChatCodeExample[] = [
+  {
+    title: '[13 Sunrise]',
+    itemId: 30703,
+    quantity: 13,
+    skinId: null,
+    upgrade1Id: 24554,
+    upgrade2Id: 49447,
+  },
+  {
+    title: '[69 Bananas of Penetration]',
+    itemId: 12251,
+    quantity: 69,
+    skinId: null,
+    upgrade1Id: 24887,
+    upgrade2Id: null,
+  },
+  {
+    title: '[255 Dhuum Vale]',
+    itemId: 85633,
+    quantity: 255,
+    skinId: null,
+    upgrade1Id: null,
+    upgrade2Id: null,
+  },
+];
+
+const Examples = ({
+  onApplyExample,
+}: {
+  onApplyExample: (example: ChatCodeExample) => void;
+}) => {
+  return (
+    <ul className="flex flex-col gap-2">
+      {examples.map((example, index) => (
+        <li key={`example-${example.itemId}-${index}`}>
+          <button
+            type="button"
+            onClick={() => onApplyExample(example)}
+            className="w-full text-left px-3 py-2 rounded-lg bg-neutral-50/80 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+          >
+            <span className="text-sm font-medium">{example.title}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default function ChatCodeGeneratorPage() {
   const {
@@ -39,8 +120,45 @@ export default function ChatCodeGeneratorPage() {
     copyToClipboard,
   } = useChatCodeGenerator();
 
+  const applyExample = async (example: ChatCodeExample) => {
+    // We need to set both the form values and `selectedItem` so `finalCode` can be computed.
+    const res = await fetchItems([example.itemId]);
+    const item = res?.[0];
+    if (!item) return;
+
+    handleSelectItem(item);
+    form.setValue('quantity', example.quantity, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+    form.setValue('skinId', example.skinId ? example.skinId.toString() : '', {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+    form.setValue(
+      'upgrade1Id',
+      example.upgrade1Id ? example.upgrade1Id.toString() : '',
+      {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      },
+    );
+    form.setValue(
+      'upgrade2Id',
+      example.upgrade2Id ? example.upgrade2Id.toString() : '',
+      {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      },
+    );
+  };
+
   return (
-    <Section variant="blue">
+    <Section variant="blue" className="min-h-[900px]">
       <header className="mb-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
@@ -69,18 +187,53 @@ export default function ChatCodeGeneratorPage() {
         />
 
         <AlertTitle>How it works</AlertTitle>
-        <AlertDescription>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit qui
-          accusantium, laudantium commodi unde, corrupti architecto id,
-          accusamus ea delectus optio iusto quam maiores in provident repellat
-          cumque cupiditate! Voluptatem, hic soluta? Lorem ipsum dolor sit amet
-          consectetur.
+        <AlertDescription className="text-sm leading-relaxed">
+          This tool helps you generate custom chat codes for items, allowing you
+          to specify quantities, skins, and upgrades like runes or sigils. To
+          get started, you need to find the specific{' '}
+          <ResponsiveHoverCard
+            openDelay={200}
+            className="w-80"
+            trigger={
+              <span className="font-bold underline decoration-dotted underline-offset-4 cursor-help text-blue-600 dark:text-blue-400">
+                Item ID
+              </span>
+            }
+          >
+            <div className="flex flex-col gap-2">
+              <p className="text-xs font-medium">Where to find the ID:</p>
+              <div className="overflow-hidden rounded-md border border-dashed  grid place-items-center">
+                <Image
+                  src="/images/id-location.webp"
+                  alt="ID Location"
+                  width={300}
+                  height={300}
+                />
+              </div>
+              <p className="text-[10px] text-neutral-500 italic">
+                The ID is usually found in the info box on the right side of any
+                wiki page.
+              </p>
+            </div>
+          </ResponsiveHoverCard>{' '}
+          on the{' '}
+          <a
+            href="https://wiki.guildwars2.com/wiki/Main_Page"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1"
+          >
+            official wiki
+            <ExternalLinkIcon className="size-3" />
+          </a>
+          . Simply paste the ID into the form below to generate your unique
+          code.
         </AlertDescription>
       </Alert>
 
-      <div className="max-w-6xl mx-auto py-8 md:py-12 lg:py-16 flex flex-col lg:flex-row gap-10">
+      <div className="max-w-6xl mx-auto py-8 md:py-12 lg:py-16 grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Form Group using Shadcn FieldGroup */}
-        <FieldGroup className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4 h-fit">
+        <FieldGroup className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-8 h-fit col-span-1 md:col-span-2">
           <Field
             className="md:col-span-2 relative group"
             data-invalid={!!form.formState.errors.itemId}
@@ -89,7 +242,7 @@ export default function ChatCodeGeneratorPage() {
             <div className="relative">
               <Input
                 id="itemId"
-                placeholder="Enter the ID (e.g., 19976, 30689...)"
+                placeholder="e.g., 19976 or 30689"
                 {...form.register('itemId')}
                 aria-invalid={!!form.formState.errors.itemId}
                 variant="image"
@@ -215,9 +368,13 @@ export default function ChatCodeGeneratorPage() {
           </Field>
         </FieldGroup>
 
+        <div className="col-span-1 md:col-span-2">
+          <h2 className="text-lg font-bold">Examples</h2>
+          <Examples onApplyExample={applyExample} />
+        </div>
+
         {/* Selected Preview */}
-        {/* Selected Preview - GW2 Style */}
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center col-span-1 md:col-start-3 md:row-start-1 md:row-span-2">
           {selectedItem ? (
             <GW2ItemPreview
               item={selectedItem}
@@ -229,23 +386,7 @@ export default function ChatCodeGeneratorPage() {
               upgrade2Id={form.watch('upgrade2Id')}
             />
           ) : (
-            <div
-              className={cn(
-                'flex flex-col gap-2 items-center justify-center p-12 w-full rounded-3xl border transition-all duration-300',
-                'bg-neutral-100/50 dark:bg-neutral-900/30 border-dashed border-neutral-300 dark:border-neutral-800',
-              )}
-            >
-              <Image
-                src="/icons/level-80_boost.png"
-                alt="Item"
-                width={64}
-                height={64}
-                className="rounded-full size-16 opacity-75"
-              />
-              <p className="text-muted-foreground font-medium">
-                Search for an item to start
-              </p>
-            </div>
+            <EmptyPreview />
           )}
         </div>
       </div>
