@@ -30,7 +30,7 @@ const ITEMS = [
 
 export const Hero = () => {
   return (
-    <section className="relative flex min-h-svh items-center justify-center overflow-hidden w-full">
+    <section className="relative flex min-h-svh items-center justify-center overflow-hidden w-full max-w-7xl mx-auto">
       <div className="relative flex container h-full flex-col justify-between px-4 md:px-6 lg:px-8 gap-16">
         <div className="flex flex-1 items-center justify-center">
           <div className="mx-auto flex max-w-2xl flex-col items-center text-center">

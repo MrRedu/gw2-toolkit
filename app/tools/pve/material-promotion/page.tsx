@@ -6,21 +6,13 @@ import {
   type PromotionResult,
   type BuyMode,
 } from '@/hooks/use-material-promotion';
-import {
-  RefreshCw,
-  AlertTriangle,
-  CircleQuestionMarkIcon,
-  AnvilIcon,
-  ShoppingCart,
-  Clock,
-} from 'lucide-react';
+import { AlertTriangle, AnvilIcon, ShoppingCart, Clock } from 'lucide-react';
 import { TierSection } from './_components/tier-section';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
-import { Section } from '@/components/atoms/section';
 import Image from 'next/image';
 
 // ─── Loading Skeleton ────────────────────────────────────────────────
@@ -73,14 +65,14 @@ export default function MaterialPromotionPage() {
   const profitableCount = results.filter((r) => r.profit > 0).length;
 
   return (
-    <Section>
+    <>
       {/* Header */}
       <header className="mb-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2 ">
-              <div className="p-2 rounded-lg bg-linear-to-br from-amber-500/20 to-orange-600/10 border border-amber-700/30">
-                <AnvilIcon className="size-5 text-amber-500" />
+              <div className="p-2 rounded-lg bg-linear-to-br from-emerald-500/20 to-green-600/10 border border-emerald-700/30">
+                <AnvilIcon className="size-5 text-emerald-500" />
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white tracking-tight">
                 Material Promotion
@@ -255,6 +247,6 @@ export default function MaterialPromotionPage() {
             Philosopher&apos;s Stones cost not included (Spirit Shards)
           </p>
         </footer> */}
-    </Section>
+    </>
   );
 }

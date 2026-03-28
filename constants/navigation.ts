@@ -21,11 +21,19 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       {
         label: 'Material Promotion',
-        href: '/tools/material-promotion',
+        href: '/tools/pve/material-promotion',
         tooltip: 'PvE: Material promotion',
-        description: 'Description',
+        description: 'Description.',
         ctaLabel: 'Calculate Now',
         image: '/icons/mystic_forge.png',
+      },
+      {
+        label: 'Collections',
+        href: '/tools/pve/collections',
+        tooltip: 'Collections',
+        description: 'Description.',
+        ctaLabel: 'Browse Collections',
+        image: '/icons/black_lion_menu_bar.png',
       },
       // {
       //   label: 'Meta Event Timer',
@@ -35,27 +43,19 @@ export const NAV_GROUPS: NavGroup[] = [
       //     'Find the next meta event you want to play within a few seconds.',
       //   ctaLabel: 'Find Meta Event',
       // },
-      // {
-      //   label: 'Collections',
-      //   href: '#',
-      //   tooltip: 'Collections',
-      //   description:
-      //     'Easily get an overview of various collections and their current Trading Post buy and sell values.',
-      //   ctaLabel: 'Browse Collections',
-      // },
     ],
   },
   {
     label: 'WvW',
     items: [
-      {
-        label: 'Live Map',
-        href: '#',
-        tooltip: 'WvW: Live Map',
-        description: 'Track the status of your favorite World vs. World map.',
-        ctaLabel: 'Track Your Map',
-        image: '/icons/wvw.png',
-      },
+      // {
+      //   label: 'Live Map',
+      //   href: '#',
+      //   tooltip: 'WvW: Live Map',
+      //   description: 'Track the status of your favorite World vs. World map.',
+      //   ctaLabel: 'Track Your Map',
+      //   image: '/icons/wvw.png',
+      // },
       // {
       //   label: 'World vs. World Scoreboard',
       //   href: '#',
@@ -64,6 +64,14 @@ export const NAV_GROUPS: NavGroup[] = [
       //     'Get a quick overview of every ongoing match in your World vs. World region.',
       //   ctaLabel: 'Discover Stats',
       // },
+      {
+        label: 'Matches',
+        href: '/tools/wvw/matches',
+        tooltip: 'WvW: Matches',
+        description: 'Description.',
+        ctaLabel: 'Track Your Match',
+        image: '/icons/wvw.png',
+      },
     ],
   },
   {
@@ -71,9 +79,9 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       {
         label: 'Chat Code Generator',
-        href: '/tools/chat-code-generator',
+        href: '/tools/utility/chat-code-generator',
         tooltip: 'Utility: Chat Code Generator',
-        description: 'Description',
+        description: 'Generate custom chat codes for items.',
         ctaLabel: 'Create Chat Code',
         image: '/icons/under_construction.png',
       },

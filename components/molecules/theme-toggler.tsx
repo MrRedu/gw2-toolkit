@@ -9,15 +9,16 @@ export const ThemeToggler = () => {
 
   return (
     <Toggle
-      aria-label="Toggle bookmark"
+      aria-label="Toggle theme"
       size="lg"
       variant="outline"
       className="fixed right-8 bottom-8 z-[999]"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
-      {theme === 'dark' ? (
+      {theme === 'dark' && (
         <SunIcon className="group-data-[state=on]/toggle:fill-foreground" />
-      ) : (
+      )}
+      {theme === 'light' && (
         <MoonIcon className="group-data-[state=on]/toggle:fill-foreground" />
       )}
     </Toggle>

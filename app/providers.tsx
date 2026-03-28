@@ -13,7 +13,7 @@ import {
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/ui/side-bar/app-sidebar';
 import { Header } from './_components/header';
-import Image from 'next/image';
+import { ThemeToggler } from '@/components/molecules/theme-toggler';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -68,10 +68,10 @@ export default function Providers({
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
+        enableSystem={false}
         forcedTheme="dark"
         // defaultTheme="system"
         // enableSystem
-        enableSystem={false}
         disableTransitionOnChange
       >
         <TooltipProvider>
@@ -79,7 +79,7 @@ export default function Providers({
             <AppSidebar />
             <SidebarInset className="relative">
               {/* ****** Decoration images ************* */}
-              <Image
+              {/* <Image
                 src="/images/bg-top.png"
                 alt=""
                 className="fixed left-0 right-0 h-[280px] w-auto opacity-40"
@@ -92,11 +92,12 @@ export default function Providers({
                 className="fixed bottom-0 right-0 w-[446px] h-[183px] rotate-180 opacity-40"
                 width={446}
                 height={183}
-              />
+              /> */}
               {/* ************************************** */}
 
               <Header />
               <main>{children}</main>
+              {/* <ThemeToggler /> */}
             </SidebarInset>
           </SidebarProvider>
         </TooltipProvider>
