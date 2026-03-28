@@ -97,7 +97,7 @@ export default function Providers({
 
               <Header />
               <main>{children}</main>
-              <ThemeToggler />
+              {/* <ThemeToggler /> */}
             </SidebarInset>
           </SidebarProvider>
         </TooltipProvider>
