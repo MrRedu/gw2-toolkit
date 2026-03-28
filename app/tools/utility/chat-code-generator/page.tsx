@@ -21,6 +21,7 @@ import {
   type ChatCodeExample,
   ExamplesChatCodes,
 } from './_components/examples-chat-codes';
+import { HeaderSection } from './_components/header-section';
 
 export default function ChatCodeGeneratorPage() {
   const {
@@ -73,29 +74,11 @@ export default function ChatCodeGeneratorPage() {
 
   return (
     <>
-      <header className="mb-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 rounded-lg bg-linear-to-br from-blue-500/20 to-indigo-600/10 border border-blue-700/30">
-                <CodeIcon className="size-5 text-blue-600 dark:text-blue-400" />
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white tracking-tight">
-                Chat Code Generator
-              </h1>
-            </div>
-            <p className="text-sm text-black/80 dark:text-white/80 max-w-md">
-              Generate funny, unusual and unique chat codes for items, skills,
-              and more.
-            </p>
-          </div>
-        </div>
-      </header>
-
+      <HeaderSection />
       <HowItWorks />
 
       <div className="@container">
-        <div className="max-w-6xl mx-auto py-8 md:py-12 lg:py-16 grid grid-cols-1 @[910px]:grid-cols-3 gap-10 ">
+        <div className="max-w-6xl mx-auto py-8 md:py-12 lg:py-16 grid grid-cols-1 @[910px]:grid-cols-3 gap-10">
           {/* Form Group using Shadcn FieldGroup */}
           <FieldGroup className="grid grid-cols-1 @[910px]:grid-cols-3 gap-x-6 gap-y-8 h-fit col-span-1 @[910px]:col-span-2">
             <Field

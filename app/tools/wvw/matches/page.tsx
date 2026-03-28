@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/table';
 import { MinusIcon, MoveDownIcon, MoveUpIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { HeaderSection } from './_components/header-section';
+import { HowItWorks } from './_components/how-it-works';
 
 const regionNamesMap = REGION_NAMES as Record<string, { en: string }>;
 
@@ -131,69 +133,80 @@ export default async function MatchesPage() {
     .filter((rows) => rows.length > 0);
 
   return (
-    <section>
-      <Table>
-        <TableHeader>
-          <TableRow className="text-xs [&>th]:mb-auto uppercase tracking-widest">
-            <TableHead>Tier</TableHead>
-            <TableHead>Teams</TableHead>
-            <TableHead className="text-right">
-              Current
-              <br /> Skirmish Score
-            </TableHead>
-            <TableHead className="text-right">Kills</TableHead>
-            <TableHead className="text-right">Deaths</TableHead>
-            <TableHead className="text-right">K/D</TableHead>
-            <TableHead className="text-right">TotalWarScore</TableHead>
-            <TableHead className="text-right">PPK</TableHead>
-            <TableHead className="text-right">Victory Points</TableHead>
-            <TableHead className="text-right">Trend</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {rowsByTier.flatMap((tierRows, tierIndex) => {
-            const tierTableRows = tierRows.map((row, index) => (
-              <TableRow key={row.key}>
-                {index === 0 ? (
-                  <TableCell rowSpan={tierRows.length}>{row.tier}</TableCell>
-                ) : null}
-                <TableCell className={getTeamNameColorClass(row.teamColor)}>
-                  {row.teamName}
-                </TableCell>
-                <TableCell className="text-right">
-                  {formatNumber(row.currentSkirmishScore)}
-                </TableCell>
-                <TableCell className="text-right">
-                  {formatNumber(row.kills)}
-                </TableCell>
-                <TableCell className="text-right">
-                  {formatNumber(row.deaths)}
-                </TableCell>
-                <TableCell className={`text-right ${getKdColorClass(row.kd)}`}>
-                  {formatRatio(row.kd)}
-                </TableCell>
-                <TableCell className="text-right">
-                  {formatNumber(row.totalWarScore)}
-                </TableCell>
-                <TableCell className="text-right">
-                  {formatPercent(row.ppk)}
-                </TableCell>
-                <TableCell className="text-right">{row.vp}</TableCell>
-                <TableCell className="text-right">
-                  {toTrendSymbol(row.trend)}
-                </TableCell>
-              </TableRow>
-            ));
+    <>
+      <HeaderSection />
+      <HowItWorks />
 
-            return [
-              ...tierTableRows,
-              <TableRow key={`empty-${tierIndex}`} className="h-8">
-                <TableCell colSpan={9} />
-              </TableRow>,
-            ];
-          })}
-        </TableBody>
-      </Table>
-    </section>
+      <div className="@container">
+        <div className="max-w-6xl mx-auto py-8 md:py-12 lg:py-16">
+          <Table>
+            <TableHeader>
+              <TableRow className="text-xs [&>th]:mb-auto uppercase tracking-widest">
+                <TableHead>Tier</TableHead>
+                <TableHead>Teams</TableHead>
+                <TableHead className="text-right">
+                  Current
+                  <br /> Skirmish Score
+                </TableHead>
+                <TableHead className="text-right">Kills</TableHead>
+                <TableHead className="text-right">Deaths</TableHead>
+                <TableHead className="text-right">K/D</TableHead>
+                <TableHead className="text-right">TotalWarScore</TableHead>
+                <TableHead className="text-right">PPK</TableHead>
+                <TableHead className="text-right">Victory Points</TableHead>
+                <TableHead className="text-right">Trend</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {rowsByTier.flatMap((tierRows, tierIndex) => {
+                const tierTableRows = tierRows.map((row, index) => (
+                  <TableRow key={row.key}>
+                    {index === 0 ? (
+                      <TableCell rowSpan={tierRows.length}>
+                        {row.tier}
+                      </TableCell>
+                    ) : null}
+                    <TableCell className={getTeamNameColorClass(row.teamColor)}>
+                      {row.teamName}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {formatNumber(row.currentSkirmishScore)}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {formatNumber(row.kills)}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {formatNumber(row.deaths)}
+                    </TableCell>
+                    <TableCell
+                      className={`text-right ${getKdColorClass(row.kd)}`}
+                    >
+                      {formatRatio(row.kd)}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {formatNumber(row.totalWarScore)}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {formatPercent(row.ppk)}
+                    </TableCell>
+                    <TableCell className="text-right">{row.vp}</TableCell>
+                    <TableCell className="text-right">
+                      {toTrendSymbol(row.trend)}
+                    </TableCell>
+                  </TableRow>
+                ));
+
+                return [
+                  ...tierTableRows,
+                  <TableRow key={`empty-${tierIndex}`} className="h-8">
+                    <TableCell colSpan={9} />
+                  </TableRow>,
+                ];
+              })}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
+    </>
   );
 }

@@ -79,8 +79,8 @@ export default function MaterialPromotionPage() {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2 ">
-              <div className="p-2 rounded-lg bg-linear-to-br from-amber-500/20 to-orange-600/10 border border-amber-700/30">
-                <AnvilIcon className="size-5 text-amber-500" />
+              <div className="p-2 rounded-lg bg-linear-to-br from-emerald-500/20 to-green-600/10 border border-emerald-700/30">
+                <AnvilIcon className="size-5 text-emerald-500" />
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white tracking-tight">
                 Material Promotion
