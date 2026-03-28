@@ -73,7 +73,7 @@ export default function MaterialPromotionPage() {
   const profitableCount = results.filter((r) => r.profit > 0).length;
 
   return (
-    <Section>
+    <>
       {/* Header */}
       <header className="mb-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
@@ -255,6 +255,6 @@ export default function MaterialPromotionPage() {
             Philosopher&apos;s Stones cost not included (Spirit Shards)
           </p>
         </footer> */}
-    </Section>
+    </>
   );
 }
