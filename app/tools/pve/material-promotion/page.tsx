@@ -6,21 +6,13 @@ import {
   type PromotionResult,
   type BuyMode,
 } from '@/hooks/use-material-promotion';
-import {
-  RefreshCw,
-  AlertTriangle,
-  CircleQuestionMarkIcon,
-  AnvilIcon,
-  ShoppingCart,
-  Clock,
-} from 'lucide-react';
+import { AlertTriangle, AnvilIcon, ShoppingCart, Clock } from 'lucide-react';
 import { TierSection } from './_components/tier-section';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
-import { Section } from '@/components/atoms/section';
 import Image from 'next/image';
 
 // ─── Loading Skeleton ────────────────────────────────────────────────

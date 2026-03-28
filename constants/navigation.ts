@@ -23,9 +23,17 @@ export const NAV_GROUPS: NavGroup[] = [
         label: 'Material Promotion',
         href: '/tools/pve/material-promotion',
         tooltip: 'PvE: Material promotion',
-        description: 'Description',
+        description: 'Description.',
         ctaLabel: 'Calculate Now',
         image: '/icons/mystic_forge.png',
+      },
+      {
+        label: 'Collections',
+        href: '/tools/pve/collections',
+        tooltip: 'Collections',
+        description: 'Description.',
+        ctaLabel: 'Browse Collections',
+        image: '/icons/black_lion_menu_bar.png',
       },
       // {
       //   label: 'Meta Event Timer',
@@ -34,14 +42,6 @@ export const NAV_GROUPS: NavGroup[] = [
       //   description:
       //     'Find the next meta event you want to play within a few seconds.',
       //   ctaLabel: 'Find Meta Event',
-      // },
-      // {
-      //   label: 'Collections',
-      //   href: '#',
-      //   tooltip: 'Collections',
-      //   description:
-      //     'Easily get an overview of various collections and their current Trading Post buy and sell values.',
-      //   ctaLabel: 'Browse Collections',
       // },
     ],
   },
