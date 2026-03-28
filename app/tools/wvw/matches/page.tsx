@@ -126,7 +126,7 @@ export default async function MatchesPage() {
     NA_MATCHES.map((matchId) => fetchWvWMatch(matchId)),
   );
 
-  // TODO: Add TanStackQuery + R
+  // TODO: Add TanStackQuery + RefreshButton
 
   // console.log(matches[1]);
 
