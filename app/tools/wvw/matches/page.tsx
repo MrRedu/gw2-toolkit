@@ -126,6 +126,8 @@ export default async function MatchesPage() {
     NA_MATCHES.map((matchId) => fetchWvWMatch(matchId)),
   );
 
+  // TODO: Add TanStackQuery + R
+
   // console.log(matches[1]);
 
   const rowsByTier = matches
